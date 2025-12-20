@@ -11,8 +11,8 @@
 
 这个项目中**删除了部分数据集文件以节省空间**，如果要进行复现，**请自行准备数据集**！    
 数据集准备方法：
-1. 将你的数据集压缩文件（images.zip）解压后放入 `codes/cnn_python/data/images` 目录下。
-2. 创建标签文件 `codes/cnn_python/data/labels.txt`，格式为每行 `image_name label`，label 范围为 1..7。本项目中已包含该文件，但请**确认其内容与数据集目录对应**。
+1. 将你的数据集压缩文件（images.zip）解压后放入 `cnn_python/data/images` 目录下。
+2. 创建标签文件 `cnn_python/data/labels.txt`，格式为每行 `image_name label`，label 范围为 1..7。本项目中已包含该文件，但请**确认其内容与数据集目录对应**。
 3. 确保数据集目录结构正确。
 
 代码目录结构：
@@ -51,10 +51,10 @@ codes/
 
 2. 安装依赖
 
-- 已在 [codes/cnn_python/requirements.txt](codes/cnn_python/requirements.txt) 列出常用依赖，推荐先使用：
+- 已在 [cnn_python/requirements.txt](cnn_python/requirements.txt) 列出常用依赖，推荐先使用：
 
 ```bash
-pip install -r codes/cnn_python/requirements.txt
+pip install -r cnn_python/requirements.txt
 ```
 
 2. 可选：GPU / CUDA
@@ -63,10 +63,10 @@ pip install -r codes/cnn_python/requirements.txt
 
 3. 运行目录与常见命令
 
-- 绝大多数脚本假定当前工作目录为 `codes/cnn_python`。示例：
+- 绝大多数脚本假定当前工作目录为 `cnn_python`。示例：
 
 ```bash
-cd codes/cnn_python
+cd cnn_python
 python train.py --num_epochs 50 --batch_size 64
 ```
 
@@ -81,10 +81,10 @@ python valid_python_single.py
 由于该项目已经包含了已训练好的参数，所以复现训练是可选的。如果你想从头开始训练模型，请按照以下步骤操作：
 
 项目复现过程（训练）：  
-- 1. 导入你自己的数据集到 `codes/cnn_python/data/images` 目录下，标签文件为 `codes/cnn_python/data/labels.txt`，格式为每行 `image_name label`，label 范围为 1..7。
+- 1. 导入你自己的数据集到 `cnn_python/data/images` 目录下，标签文件为 `cnn_python/data/labels.txt`，格式为每行 `image_name label`，label 范围为 1..7。
 ```sh
 # 必须在cnn_python下运行，否则请：
-# cd codes/cnn_python
+# cd cnn_python
 python train.py
 ```
 
@@ -105,7 +105,7 @@ C验证：
 python valid_c.py
 ```
 
-运行完毕后，C程序会在 `codes/cnn_c/output` 目录下生成中间输出文件，可将其与 Numpy 结果进行对比。
+运行完毕后，C程序会在 `cnn_c/output` 目录下生成中间输出文件，可将其与 Numpy 结果进行对比。
 
 ---
 
@@ -118,15 +118,15 @@ python valid_c.py
 - 本项目实现了一个轻量卷积神经网络（LCNN）用于面部表情识别，主要基于 PyTorch 训练；并提供将训练权重导出为二进制参数、用 Numpy 重实现推理以验证、以及用 C 语言实现的推理示例。
 
 **代码结构**
-- 模型定义：[codes/cnn_python/model.py](codes/cnn_python/model.py)
-- 训练脚本：[codes/cnn_python/train.py](codes/cnn_python/train.py)
-- 数据集与预处理：[codes/cnn_python/test_dataset.py](codes/cnn_python/test_dataset.py)
-- 导出参数：[codes/cnn_python/save_parameters.py](codes/cnn_python/save_parameters.py)
-- Numpy 验证（单张/批量）：[codes/cnn_python/valid_python_single.py](codes/cnn_python/valid_python_single.py), [codes/cnn_python/valid_python_many.py](codes/cnn_python/valid_python_many.py)
-- C 实现验证脚本：[codes/cnn_python/valid_c.py](codes/cnn_python/valid_c.py)
-- C 推理示例：[codes/cnn_c/example.cpp](codes/cnn_c/example.cpp)
-- 训练结果与检查点：[codes/cnn_python/results](codes/cnn_python/results)
-- 导出参数目录：[codes/cnn_python/params](codes/cnn_python/params)
+- 模型定义：[cnn_python/model.py](cnn_python/model.py)
+- 训练脚本：[cnn_python/train.py](cnn_python/train.py)
+- 数据集与预处理：[cnn_python/test_dataset.py](cnn_python/test_dataset.py)
+- 导出参数：[cnn_python/save_parameters.py](cnn_python/save_parameters.py)
+- Numpy 验证（单张/批量）：[cnn_python/valid_python_single.py](cnn_python/valid_python_single.py), [cnn_python/valid_python_many.py](cnn_python/valid_python_many.py)
+- C 实现验证脚本：[cnn_python/valid_c.py](cnn_python/valid_c.py)
+- C 推理示例：[cnn_c/example.cpp](cnn_c/example.cpp)
+- 训练结果与检查点：[cnn_python/results](cnn_python/results)
+- 导出参数目录：[cnn_python/params](cnn_python/params)
 
 **依赖**
 - Python 3.8+（建议）
@@ -138,13 +138,13 @@ python -m pip install torch torchvision numpy pillow matplotlib pandas
 ```
 
 **数据与标签格式**
-- 数据目录：`codes/cnn_python/data/images`
-- 标签文件：`codes/cnn_python/data/labels.txt`，每行格式：`image_name label`（label 为 1..7，对应 7 个表情）
+- 数据目录：`cnn_python/data/images`
+- 标签文件：`cnn_python/data/labels.txt`，每行格式：`image_name label`（label 为 1..7，对应 7 个表情）
 
 **快速开始**
 1. 切换到工程 Python 目录：
 ```bash
-cd codes/cnn_python
+cd cnn_python
 ```
 1. 训练模型（示例）：
 ```bash
@@ -174,15 +174,15 @@ cd ../cnn_c
 cl /EHsc example.cpp   # 或使用 g++: g++ -O2 example.cpp -o example.exe
 example.exe
 ```
-运行后会在 `codes/cnn_c/output` 生成中间输出文件。
+运行后会在 `cnn_c/output` 生成中间输出文件。
 
 **输出与结果**
-- PyTorch 训练产生的模型检查点：`codes/cnn_python/results/`（包含 epoch_x.pth, best.ckpt）
-- 导出参数：`codes/cnn_python/params/`（二进制 float32）
-- C 运行输出：`codes/cnn_c/output/`（文本格式的中间张量）
+- PyTorch 训练产生的模型检查点：`cnn_python/results/`（包含 epoch_x.pth, best.ckpt）
+- 导出参数：`cnn_python/params/`（二进制 float32）
+- C 运行输出：`cnn_c/output/`（文本格式的中间张量）
 
 **注意事项 / 已知点**
-- 路径为相对路径，Windows 下脚本中使用了反斜杠和正斜杠混合，运行前请确认当前工作目录为 `codes/cnn_python`（或相应调整路径）。
+- 路径为相对路径，Windows 下脚本中使用了反斜杠和正斜杠混合，运行前请确认当前工作目录为 `cnn_python`（或相应调整路径）。
 - `save_parameters.py` 与验证脚本默认把 `best.ckpt` 加载到 CPU（map_location），确保 `./results/best.ckpt` 存在。
 - Numpy/C 实现与 PyTorch 之间可能出现数值差异，`valid_python_single.py` 会输出平均绝对误差以评估差异。
 
