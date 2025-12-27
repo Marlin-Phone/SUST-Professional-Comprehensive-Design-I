@@ -252,8 +252,8 @@ if __name__ == '__main__':
     print("参数加载完成")
 
     # batch inference
-    img_dir = 'E:\\test_data\\images'
-    label_path = 'E:\\test_data\\labels.txt'
+    img_dir = 'data\\images'
+    label_path = 'data\\labels.txt'
 
     N = 200
     preds = []
@@ -261,7 +261,7 @@ if __name__ == '__main__':
     
     with open(label_path, 'r', encoding='utf-8') as f:
         lines = f.readlines()
-        for i, line in enumerate(lines[:]):
+        for i, line in enumerate(lines[:N]):
             img_name, label = line.split(' ')
             img = Image.open(os.path.join(img_dir, img_name))
             img_tensor = transform(img).unsqueeze(0)
