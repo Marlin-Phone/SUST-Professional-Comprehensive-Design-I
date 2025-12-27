@@ -31,6 +31,7 @@ codes/
         test_0001_aligned.bmp       # 测试图像文件
         ...
         train_00001_aligned.bmp     # 训练图像文件
+      image.bmp                     # 示例图像文件
       labels.txt                    # 标签文件（本项目中已包含，但需确认与图像数据集目录对应）
     results/                        # 训练结果与检查点
     params/                         # 导出参数目录
